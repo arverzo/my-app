@@ -1,0 +1,117 @@
+
+  body{
+        /* background: url(../assets/technology/background-technology-desktop.jpg); */
+        margin: 0px;
+    
+    } 
+    .top-nav{
+      /* border: 2px solid #fff;  */
+     display: flex;
+     margin-top: 50px;
+  }
+  .top-nav-menu{
+    padding-right: 0px;
+    background-color:rgba(151, 151, 151, 0.4);
+    font-family: 'Barlow Condensed'; 
+    font-size: 16px;
+  }
+  .top-nav-menu ul {
+     list-style: none;
+     color: #fff;
+     display: flex;   
+  }
+  .top-nav-menu li{
+    padding-right: 50px;
+    padding-top:10px ;
+  }
+  .top-nav-menu a{
+    color: #fff;
+    text-decoration: none;
+  }
+  .top-nav-logo{
+    padding: 10px 10px 10px 30px ;
+  }
+  .top-nav-line{
+    margin: auto;
+    width: 50%;
+  
+  }
+  .technology-primary-content-section{
+    /* border: 2px solid #fff; */
+    color: #fff;
+    margin: 80px 0px 0px 80px;
+  }
+  .primary-content-number{
+    color:#D0D6F9 ;
+}
+
+
+  .main-content-section{
+    /* border: 2px solid green; */
+    color: #fff;
+    display: flex;
+     
+  }
+/* left content */
+ .left-content-section{
+    /* border: 2px solid #fff; */
+    margin-left: 90px;
+    
+    padding-top: 100px; 
+     
+  }
+
+ .left-content-section button {
+    padding: 25px;
+    color: #fff;
+    margin-bottom: 30px;
+    /* border: 2px solid #fff; */
+    background: transparent;
+    font-size: 32px;
+    border-radius: 50%;
+    width: 80px;
+ }  
+ .left-content-section button.active{
+     color:#000;
+     background-color: #fff;
+ }
+    button:hover{
+     background-color: #fff;
+     color: black;
+    }
+
+   
+
+
+
+.right-content-section{
+    display: flex;
+}
+.right-content-section-descr{
+    font-family: 'Barlow Condensed';
+    /* border: 2px solid #FFF; */
+    margin-top: 80px;
+    margin-left: 50px;
+    width: 500px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px; 
+    padding-bottom: 40PX;
+  }
+  .right-content-section-descr p {
+    font-size: 16px;
+    color: #D0D6F9;
+    font-family: 'Barlow Condensed';
+  }
+  .right-content-section-descr label{
+    font-size: 56px;
+  } 
+
+  .right-content-section-img{
+    /* border: 2px solid #fff; */
+    margin-left: 20px;
+  }
+
+  
+
+    

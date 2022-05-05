@@ -1,0 +1,93 @@
+body {
+  background: url(../assets/home/background-home-desktop.jpg);
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body.destination {
+  background: url(../assets/destination/background-destination-desktop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body.crew {
+  background: url(../assets/crew/background-crew-desktop.jpg);
+  background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.technology {
+  background: url(../assets/technology/background-technology-desktop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reactslick{
+  border:  2px solid green;
+}
+
+.mobile-navbar {
+  display: none;
+}
+
+.mobile-navbar-hamburger{
+  display: none;
+}
+/* start of navigation */
+.top-nav-menu {
+  border: 2px solid blue;
+  padding-right: 0px;
+  background-color: rgba(151, 151, 151, 0.4);
+  font-family: "Barlow Condensed";
+  font-size: 16px;
+}
+.top-navbar-number  {
+ margin-inline-end: 2px;
+ font-weight: 800;
+ 
+}
+.top-nav-menu li {
+  padding-right: 0px;
+  padding-top: 10px;
+  margin-inline-end: 40px;
+  display: flex;
+  width: 98px;
+}
+/* end of navigation bar */
+
+.main-container {
+  display: flex;
+  margin-top: 200px;
+  color: #d0d6f9;
+}
+.content-section {
+  /* border: 2px solid #fff; */
+  font-family: "Barlow Condensed";
+  padding-left: 80px;
+  padding-right: 50px;
+  padding-top: -10px;
+  width: 300px;
+  
+}
+
+.content-title {
+  font-size: 150px;
+  font-family: "bellefair";
+
+
+}
+
+
+
+
+.explore-section {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 200px;
+  height: 200px;
+  margin-left: 550px;
+  margin-top: 100px;
+}
+
