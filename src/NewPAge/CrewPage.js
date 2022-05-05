@@ -73,7 +73,7 @@ export default function CrewPage() {
             <span className="text-gray-600">02</span> MEET YOUR CREW
           </h3>
         </div>
-        {/* crew image carousel */}
+        {/* crew image carousel arnold*/}
         {/* flex  */}
         <div className="md:absolute md:mt-[300px]">
           <div className="flex overflow-x-hidden w-full ">
