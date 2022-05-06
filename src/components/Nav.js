@@ -61,7 +61,7 @@ function VerticalNavbar(props) {
             right-0
             h-screen
             pt-[38px]  pl-10 text-gray-300 md:visible  md:pt-0 md:flex md:flex-row md:h-[96px]
-             md:w-[600px] md:justify-between  md:pr-[30px]
+             md:w-[600px] md:justify-between  md:pr-[30px] z-[100]
             `}
       >
         <div className={` pt-6 pr-4 flex justify-end md:invisible`}>
