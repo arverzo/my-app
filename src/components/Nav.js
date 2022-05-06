@@ -39,7 +39,7 @@ function VerticalNavbar(props) {
   const [showMenu, toggle] = useReducer((showMenu) => !showMenu, false);
 
   return (
-    <div className="w-[60%]  text-gray-300 ">
+    <div className="w-[60%]  text-gray-300 z-1000  ">
       <div
         className={`${showMenu ? "hidden" : ""} pt-6 pr-4 flex justify-end `}
       >
@@ -55,6 +55,7 @@ function VerticalNavbar(props) {
             w-[254px]
             backdrop-blur-[40px]
             bg-gray-600
+           
             bg-opacity-25
             absolute top-0
             right-0

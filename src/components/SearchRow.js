@@ -59,7 +59,8 @@ function SearchRow({
             (redditCampain !== "" && (
               <button
                 onClick={() => openNewTab(redditCampain)}
-                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white"
+                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm
+                 text-gray-400 border-gray-400 hover:border-white hover:text-white"
               >
                 Reddit Campaign
               </button>
@@ -69,7 +70,9 @@ function SearchRow({
             (redditLaunch !== "" && (
               <button
                 onClick={() => openNewTab(redditLaunch)}
-                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white"
+                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm 
+                text-gray-400 border-gray-400 
+                hover:border-white hover:text-white"
               >
                 Reddit Launch
               </button>
@@ -78,7 +81,9 @@ function SearchRow({
             (redditRecovery !== "" && (
               <button
                 onClick={() => openNewTab(redditRecovery)}
-                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white"
+                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm 
+                text-gray-400 border-gray-400
+                 hover:border-white hover:text-white"
               >
                 Reddit Recovery
               </button>
@@ -87,7 +92,9 @@ function SearchRow({
             (redditMedia !== "" && (
               <button
                 onClick={() => openNewTab(redditMedia)}
-                className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white"
+                className="barlow-condensed border p-1 md:px-4 rounded-sm 
+                text-sm text-gray-400 border-gray-400 hover:border-white 
+                hover:text-white"
               >
                 Reddit Media
               </button>

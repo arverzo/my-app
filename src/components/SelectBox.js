@@ -9,7 +9,7 @@ export default function SelectBox({
   optionSelected,
 }) {
   return (
-    <>
+    <div className="">
       <label htmlFor={name} className="px-2">
         {label}
       </label>
@@ -20,6 +20,6 @@ export default function SelectBox({
         placeholder={placeholder}
         onChange={(e) => optionSelected(e.value)}
       />
-    </>
+    </div>
   );
 }

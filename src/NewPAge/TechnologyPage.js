@@ -50,7 +50,7 @@ export default function TechnolohyPage() {
 
   return (
     // parent div
-    <div className=" text-white bg-mobile-technology h-full bg-center bg-cover bg-no-repeat h-screen ">
+    <div className=" text-white bg-mobile-technology  bg-center bg-cover bg-no-repeat h-screen ">
       {/* space launch 101 */}
       <div className="flex justify-center pt-[100px] font-barlow-condensed text-[16px]">
         <div>

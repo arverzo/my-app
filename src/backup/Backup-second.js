@@ -1,7 +1,5 @@
-import { Input } from "postcss";
 import React, { useEffect, useState } from "react";
 import Uri from "../api/axios";
-import MissionBanner from "../components/MissionBanner";
 import SelectBox from "../components/SelectBox";
 const Mission = () => {
   const [launchpads, setLaunchpads] = useState([]);
@@ -82,39 +80,17 @@ const Mission = () => {
 
   return (
     <div>
-      <MissionBanner />
-
       <form onSubmit={submit}>
-        <div className="md:col-span-2">
-          <div
-            className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-          >
-            <SelectBox
-              name="keyword"
-              label="Keyword"
-              placeholder="eg Falcon"
-              value=""
-            />
-          </div>
-          <div
-            className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-          >
-            <SelectBox
-              options={selectBox}
-              name="launchpad"
-              label="Launch Pad"
-              placeholder="ANY"
-              optionSelected={(value) => setSelectedLaunchpads(value)}
-            />
-          </div>
+        <div>
+          <SelectBox
+            options={selectBox}
+            name="launchpad"
+            label="Launch Pad"
+            placeholder="ANY"
+            optionSelected={(value) => setSelectedLaunchpads(value)}
+          />
         </div>
-
-        <div
-          className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-        >
+        <div>
           <SelectBox
             options={selectYears}
             name="minYear"
@@ -123,10 +99,7 @@ const Mission = () => {
             optionSelected={(value) => setSelectedMinYear(value)}
           />
         </div>
-        <div
-          className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-        >
+        <div>
           <SelectBox
             options={selectYears}
             name="maxYear"
@@ -135,13 +108,7 @@ const Mission = () => {
             optionSelected={(value) => setSelectedMaxYear(value)}
           />
         </div>
-        <button
-          className="barlow-condensed bg-green-500 p-2 text-center text-black bold w-full 
-         rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out "
-        >
-          {" "}
-          Apply
-        </button>
+        <button className="bg-green-400 "> Apply</button>
       </form>
 
       <section className="results">
