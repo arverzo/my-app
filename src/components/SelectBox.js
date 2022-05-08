@@ -10,7 +10,7 @@ export default function SelectBox({
 }) {
   return (
     <div className="">
-      <label htmlFor={name} className="px-2">
+      <label htmlFor={name} className="px-2 tex">
         {label}
       </label>
       <Select

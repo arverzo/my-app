@@ -8,17 +8,19 @@ function MissionBanner() {
   return (
     <div
       className="bg-desktop-mission bg-cover bg-no-repeat md:bg-desktop-mission md:bg-cover md:bg-no-repeat pt-[60px] md:pt-[150px] 
-    lg:bg-desktop-mission lg:bg-cover lg:bg-no-repeat lg:pt-[400px]"
+    lg:bg-desktop-mission lg:bg-cover lg:bg-no-repeat lg:pt-[400px] "
     >
       <div className="flex pt-[100px]"></div>
 
-      <div className="flex justify-center mt-[90px] text-[25px] text-white font-bellefair">
+      <div className="flex justify-center mt-[90px] text-[25px] text-gray-300 font-bellefair md:text-[50px] lg:text-[60px]">
         <h3>
-          {" "}
           DISCOVER SPACE MISSIONS
-          <div id="dropdown-icoon" className=" flex justify-center">
+          <div
+            id="dropdown-icoon"
+            className=" flex justify-center  lg:h-[50px]"
+          >
             <IoIosArrowDown
-              className="cursor-pointer text-lg w-10 h-10 text-white text-center mx-auto"
+              className="cursor-pointer text-lg w-10 h-10 text-white text-center mx-auto "
               onClick={() => scrollToResults()}
             ></IoIosArrowDown>
             <div className="absolute bottom-0   h-[100px] text-center w-full gradient"></div>
