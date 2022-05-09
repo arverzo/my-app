@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Uri from "../api/axios";
 import MissionBanner from "../components/MissionBanner";
 import SelectBox from "../components/SelectBox";
+import Moment from "moment";
+
 const Mission = () => {
   const [launchpads, setLaunchpads] = useState([]);
   const [selectBox, setSelectbox] = useState([]);
@@ -79,6 +81,8 @@ const Mission = () => {
       setLaunches(response.data);
     } catch (error) {}
   };
+
+  const data = [];
 
   return (
     <div>
@@ -162,44 +166,91 @@ const Mission = () => {
         {launches.map((launch) =>
           launch.payloads.map((payload, index) => (
             <div key={index} className="bg-black">
-              <div className="flex px-2 py-2">
-                <div id="una" className="bg-black ">
+              <div className="flex px-2 py-[30px] ">
+                <div className="md:ml-[70px]">
+                  <img
+                    src={launch.links.mission_patch}
+                    alt="image"
+                    className="w-[90px] h-[60px] md:h-[90px] lg:w-[50px] lg:h-[50px]"
+                  ></img>
+                </div>
+                <div id="una" className="bg-black md:ml-[90px] ">
                   <h4 className=" barlow text-white">
                     {launch.rocket.rocket_name} - {payload.payload_id}
                   </h4>
                   <p className="barlow mt-2 text-gray-300 text-xs md:text-sm md:w-4/5">
-                    Launh on {launch.launch_date_local} from{" "}
-                    {launch.launch_site.site_name}
+                    Launch on
+                    {" " + launch.launch_date_local}
+                    from {launch.launch_site.site_name}
                   </p>
                 </div>
 
-                <div className="text-center w-[10%] bg-green-400 break-normal ml-[90px]">
-                  <h2 className="barlow text-white">{launch.flight_number}</h2>
+                <div className="text-center w-[10%] break-normal ml-[90px] md:ml-[30px]">
+                  <h2 className="barlow text-white -ml-[50px]  ">
+                    {launch.flight_number}
+                  </h2>
 
-                  <p className="text-gray-400 barlow-condensed ">
+                  <p className="text-gray-400 barlow-condensed -ml-[50px] ">
                     Flight Number
                   </p>
                 </div>
               </div>
-
               <div className="space-x-2 lg:space-x-4 space-y-2 mt-2 md:mt-8"></div>
 
-              {Object.keys(launch.links).map((item, itemindex) => (
-                <a
-                  href={launch.links[item]}
-                  key={itemindex}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <button
-                    className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 
-                  border-gray-400 hover:border-white
-                   hover:text-white"
+              {Object.keys(launch.links)
+                .slice(1)
+                .map((item, itemindex) => (
+                  <a
+                    href={launch.links[item]}
+                    key={itemindex}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    {item} {launch.links.key}
-                  </button>
-                </a>
-              ))}
+                    {console.log("result: " + item)}
+
+                    {item === "article_link" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2  md:ml-[30px] ">
+                        Article
+                      </button>
+                    )}
+
+                    {item == "video_link" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white  hover:text-white ml-2  md:ml-[30px]">
+                        Watch Video
+                      </button>
+                    )}
+
+                    {item == "reddit_launch" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 ">
+                        Reddit Launch
+                      </button>
+                    )}
+
+                    {item == "presskit" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 md:ml-[30px] ">
+                        Press Kit
+                      </button>
+                    )}
+
+                    {item == "reddit_campaign" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 md:ml-[30px]">
+                        Reddit Campaign
+                      </button>
+                    )}
+
+                    {item == "reddit_media" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 ">
+                        Reddit Media
+                      </button>
+                    )}
+
+                    {item == "reddit_recovery" && (
+                      <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2  ">
+                        Reddit Recovery
+                      </button>
+                    )}
+                  </a>
+                ))}
             </div>
           ))
         )}
