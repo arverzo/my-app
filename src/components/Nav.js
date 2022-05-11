@@ -81,7 +81,7 @@ function VerticalNavbar(props) {
               key={item.to}
               className={`h-12  flex items-center pl-[2px]   ${
                 item.to === active
-                  ? " transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110  hover:text-white   hover:font-bold hover:bg-transparent duration-300 ..."
+                  ? " transition ease-in-out delay-150 bg-transparent md:border-b  hover:-translate-y-1 hover:scale-110  hover:text-white   hover:font-bold hover:bg-transparent duration-300 ..."
                   : ""
               } `}
             >

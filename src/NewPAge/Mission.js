@@ -4,16 +4,19 @@ import Uri from "../api/axios";
 import MissionBanner from "../components/MissionBanner";
 import SelectBox from "../components/SelectBox";
 import format from "date-fns/format";
+import Footer from "../components/Footer";
 
 const Mission = () => {
   const [launchpads, setLaunchpads] = useState([]);
   const [selectBox, setSelectbox] = useState([]);
   const [launches, setLaunches] = useState([]);
+  let [userLaunchesData, setUserLaunchesData] = useState([]);
   const [years, setYears] = useState([]);
   const [selectYears, setSelectYears] = useState([]);
   const [selectedMinYear, setSelectedMinYear] = useState([]);
   const [selectedMaxYear, setSelectedMaxYear] = useState([]);
   const [selectedLaunchpads, setSelectedLaunchpads] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchLaunchpads();
@@ -76,16 +79,15 @@ const Mission = () => {
     event.preventDefault();
     try {
       let searchCriteria = "";
-      searchCriteria += "?launch_date_local_gte=" + selectedMinYear;
 
-      searchCriteria += "&launch_date_local_lte=" + selectedMaxYear + 1;
-      searchCriteria += "pad?.id([0]?.full_name)" + selectedLaunchpads;
+      // searchCriteria += "?q=" + search;
 
-      // ${
-      //                         launchpads.filter(
-      //                           (pad) => launch?.launch_site?.site_id === pad?.id
-      //                         )[0]?.full_name
-      //                       }`}
+      // searchCriteria += "?launch_site.site_id=" + selectedLaunchpads;
+
+      // searchCriteria += "?launch_date_local_gte=" + selectedMinYear;
+
+      searchCriteria += "?launch_date_local_lte=" + selectedMaxYear + 1;
+
       const response = await Uri.get("/launches" + searchCriteria);
       setLaunches(response.data);
     } catch (error) {}
@@ -99,69 +101,73 @@ const Mission = () => {
       {/* md:block md:justify-center */}
       <form onSubmit={submit}>
         <div className="lg:flex lg:justify-center ">
-          <div
-            id="parent sof subdiv"
-            className="md:flex md:justify-center bg-black lg:flex lg:justify-center "
-          >
-            <div id="1st div" className="md:w-[300px] lg:flex lg:w-[700px]">
-              <div
-                className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-              >
-                <label> KEYWORD</label>
-                <input
-                  type="text"
-                  name="keyword"
-                  placeholder="eg Falcon"
-                  className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-                />
+          <div className="bg-slate-800 w-screen">
+            <div
+              id="parent sof subdiv"
+              className="md:flex md:justify-center lg:flex lg:justify-center "
+            >
+              <div id="1st div" className="md:w-[300px] lg:flex lg:w-[700px]">
+                <div
+                  className=" w-full barlow-condensed appearance-none 
+          rounded-sm py-2 px-3 text-white  leading-tight bg-transparent "
+                >
+                  <label> KEYWORD</label>
+                  <input
+                    value={search}
+                    onInput={(e) => setSearch(e.target.value)}
+                    type="text"
+                    name="keyword"
+                    placeholder="eg Falcon"
+                    className=" w-full barlow-condensed appearance-none border 
+          rounded-sm py-2 px-3 text-white leading-tight bg-transparent "
+                  />
+                </div>
+                <div
+                  className=" w-full barlow-condensed appearance-none 
+          rounded-sm py-2 px-3 text-white  leading-tight bg-transparent "
+                >
+                  <SelectBox
+                    options={selectBox}
+                    name="launchpad"
+                    label="LAUNCH PAD"
+                    placeholder="ANY"
+                    optionSelected={(value) => setSelectedLaunchpads(value)}
+                  />
+                </div>
               </div>
-              <div
-                className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-              >
-                <SelectBox
-                  options={selectBox}
-                  name="launchpad"
-                  label="LAUNCH PAD"
-                  placeholder="ANY"
-                  optionSelected={(value) => setSelectedLaunchpads(value)}
-                />
-              </div>
-            </div>
-            {/*  */}
-            <div id="second div" className="md:w-[300px] lg:flex">
-              <div
-                className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-              >
-                <SelectBox
-                  options={selectYears}
-                  name="minYear"
-                  label="MIN YEAR"
-                  placeholder="ANY"
-                  optionSelected={(value) => setSelectedMinYear(value)}
-                />
-              </div>
-              <div
-                className=" w-full barlow-condensed appearance-none border 
-          rounded-sm py-2 px-3 text-gray leading-tight bg-transparent "
-              >
-                <SelectBox
-                  options={selectYears}
-                  name="maxYear"
-                  label="MAX YEAR"
-                  placeholder="ANY"
-                  optionSelected={(value) => setSelectedMaxYear(value)}
-                />
+              {/*  */}
+              <div id="second div" className="md:w-[300px] lg:flex">
+                <div
+                  className=" w-full barlow-condensed appearance-none 
+          rounded-sm py-2 px-3 text-white  leading-tight bg-transparent "
+                >
+                  <SelectBox
+                    options={selectYears}
+                    name="minYear"
+                    label="MIN YEAR"
+                    placeholder="ANY"
+                    optionSelected={(value) => setSelectedMinYear(value)}
+                  />
+                </div>
+                <div
+                  className=" w-full barlow-condensed appearance-none  
+          rounded-sm py-2 px-3 text-white leading-tight bg-transparent "
+                >
+                  <SelectBox
+                    options={selectYears}
+                    name="maxYear"
+                    label="MAX YEAR"
+                    placeholder="ANY"
+                    optionSelected={(value) => setSelectedMaxYear(value)}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
           {/* end of parent subdiv */}
-          <div className="md:flex md:justify-center">
-            <div className="col-span-2  mt-4 md:mt-0 md:w-[620px] px-3 lg:px-3 lg:w-[200px] lg:mt-[30px]">
+          <div className="md:flex md:justify-center bg-slate-800">
+            <div className="col-span-2 pt-8 md:mt-0 md:w-[600px] px-3  py-5   md:py-5 lg:px-3 lg:pt-6 lg:w-[200px] lg:mr-10 ">
               <button
                 className="barlow-condensed bg-green-500 p-2 text-center text-black bold w-full 
          rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out "
@@ -193,6 +199,9 @@ const Mission = () => {
                     <h4 className=" barlow text-white">
                       {launch.rocket.rocket_name} - {payload.payload_id}
                     </h4>
+                    <span className="text-red-500">
+                      {launch.land_success === true ? "" : "Failed Mission"}
+                    </span>
                     <p className="barlow  text-gray-300 text-xs md:text-sm md:w-4/5 mt-10">
                       {`Launched ${format(
                         new Date(launch.launch_date_local),
@@ -210,12 +219,12 @@ const Mission = () => {
                     </p>
                   </div>
                   <div className="lg:ml-[300px]">
-                    <div className="text-center w-[10%] break-normal ml-[90px] mt-9 md:ml-[30px] ">
+                    <div className="text-center w-[10%] break-normal ml-[90px] mt-[px] md:ml-[30px] ">
                       <h2 className="barlow text-white -ml-[50px] lg:right-0 ">
                         {launch.flight_number}
                       </h2>
 
-                      <p className="text-gray-400 barlow-condensed -ml-[50px] ">
+                      <p className="text-slate-500  barlow-condensed -ml-[50px] ">
                         Flight Number
                       </p>
                     </div>
@@ -235,43 +244,43 @@ const Mission = () => {
                       {console.log("result: " + item)}
 
                       {item === "article_link" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2  md:ml-[30px] lg:ml-[50px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white md:hover:border-white md:hover-white hover:text-white ml-2  md:ml-[30px] lg:ml-[50px] ">
                           Article
                         </button>
                       )}
 
                       {item == "video_link" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white  hover:text-white ml-2  md:ml-[30px]">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white  hover:text-white  md:hover:border-white md:hover-white  ml-2  md:ml-[30px]">
                           Watch Video
                         </button>
                       )}
 
                       {item == "reddit_launch" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white   md:hover:border-white md:hover-white ml-2 ">
                           Reddit Launch
                         </button>
                       )}
 
                       {item == "presskit" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 md:ml-[30px] lg:ml-[50px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white ml-2 md:ml-[30px] lg:ml-[50px] ">
                           Press Kit
                         </button>
                       )}
 
                       {item == "reddit_campaign" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 md:ml-[30px] lg:ml-[50px]">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white  ml-2 md:ml-[30px] lg:ml-[50px]">
                           Reddit Campaign
                         </button>
                       )}
 
                       {item == "reddit_media" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2 mt-[5px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white    ml-2 mt-[5px] ">
                           Reddit Media
                         </button>
                       )}
 
                       {item == "reddit_recovery" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white ml-2  ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white   md:hover:border-white md:hover-white   ml-2  ">
                           Reddit Recovery
                         </button>
                       )}
@@ -282,6 +291,9 @@ const Mission = () => {
           ))
         )}
       </section>
+      <div className="bg-black">
+        <Footer />
+      </div>
     </div>
   );
 };
