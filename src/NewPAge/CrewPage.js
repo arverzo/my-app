@@ -137,7 +137,7 @@ export default function CrewPage() {
               </div>
             </div>
             {/* crew description */}
-            <div className=" flex justify-center items-center text-center font-barlow text-[15px] md:absolute">
+            <div className=" flex justify-center items-center text-center font-barlow text-[15px] md:absolute ml-10 mr-10">
               <div>
                 <p>{crews[selectedIndex].about}</p>
               </div>
@@ -155,7 +155,7 @@ export default function CrewPage() {
           >
             {crews[selectedIndex].name}
           </h2>
-          <p className="text-primary Text text-base barlow md:px-28 mb-8 md:mb-14 lg:px-0 lg:w-2/3 lg:mt-12 ">
+          <p className="text-primary Text text-base barlow md:px-28 mb-8 md:mb-14 lg:px-0 lg:w-2/3 lg:mt-12  ">
             {crews[selectedIndex].about}
           </p>
         </div>

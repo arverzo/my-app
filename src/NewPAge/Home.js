@@ -11,7 +11,7 @@ export default function Home() {
       <div className="h-full flex flex-col justify-between py-20 ">
         {/* text div */}
 
-        <div className="text-white  h-2/3    md:pt-[80px]  ">
+        <div className="text-white  pt-[120px] h-2/3    md:pt-[80px]  ">
           <div className="flex justify-center lg:block">
             <h3 className="text-[16px] font-barlow-condensed md:font-barlow-condensed md:text-[20px]  lg:pl-[80px]">
               SO, YOU WANT TO TRAVEL TO
@@ -22,7 +22,7 @@ export default function Home() {
               SPACE
             </h1>
           </div>
-          <div className=" flex justify-center s pl-[70px] pr-[70px] pt-[30px] lg:block">
+          <div className=" flex justify-center ml-10 mr-10  pt-[30px] lg:block">
             <p className=" text-[15px] font-barlow-condensed md:text-center md:w-[444px] md:h-[112px] md:text-[16px] lg:block">
               Let’s face it; if you want to go to space, you might as well
               genuinely go to outer space and not hover kind of on the edge of

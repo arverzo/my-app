@@ -13,9 +13,9 @@ const Mission = () => {
   let [userLaunchesData, setUserLaunchesData] = useState([]);
   const [years, setYears] = useState([]);
   const [selectYears, setSelectYears] = useState([]);
-  const [selectedMinYear, setSelectedMinYear] = useState([]);
-  const [selectedMaxYear, setSelectedMaxYear] = useState([]);
-  const [selectedLaunchpads, setSelectedLaunchpads] = useState([]);
+  const [selectedMinYear, setSelectedMinYear] = useState("");
+  const [selectedMaxYear, setSelectedMaxYear] = useState("");
+  const [selectedLaunchpads, setSelectedLaunchpads] = useState("");
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const Mission = () => {
       return { value: item, label: item };
     });
     setSelectYears(selectOptionYear);
-    console.log(selectYears);
   }, [years]);
 
   const fetchLaunchpads = async () => {
@@ -78,22 +77,44 @@ const Mission = () => {
   const submit = async (event) => {
     event.preventDefault();
     try {
-      let searchCriteria = "";
+      let searchCriteria = "?";
+      if (search !== "") {
+        searchCriteria += "q=" + search;
+      }
 
-      // searchCriteria += "?q=" + search;
+      if (selectedLaunchpads !== "" && selectedLaunchpads !== "ANY") {
+        searchCriteria += "&launch_site.site_id=" + selectedLaunchpads;
+      }
 
-      // searchCriteria += "?launch_site.site_id=" + selectedLaunchpads;
+      if (selectedMinYear !== "" && selectedMinYear !== "ANY") {
+        searchCriteria += "&launch_date_local_gte=" + selectedMinYear;
+      }
+      if (selectedMaxYear !== "" && selectedMaxYear !== "ANY") {
+        searchCriteria += "&launch_date_local_lte=" + selectedMaxYear;
+      }
 
-      // searchCriteria += "?launch_date_local_gte=" + selectedMinYear;
-
-      searchCriteria += "?launch_date_local_lte=" + selectedMaxYear + 1;
+      if (
+        selectedMinYear !== "" &&
+        selectedMinYear !== "ANY" &&
+        selectedMaxYear !== "" &&
+        selectedMaxYear !== "ANY"
+      ) {
+        if (selectedMinYear > selectedMaxYear) {
+          alert("invalid date range ");
+        }
+      }
 
       const response = await Uri.get("/launches" + searchCriteria);
       setLaunches(response.data);
+      console.log(searchCriteria);
     } catch (error) {}
   };
 
   const data = [];
+
+  const defect = () => {
+    img.target.src = "";
+  };
 
   return (
     <div>
@@ -164,7 +185,6 @@ const Mission = () => {
               </div>
             </div>
           </div>
-
           {/* end of parent subdiv */}
           <div className="md:flex md:justify-center bg-slate-800">
             <div className="col-span-2 pt-8 md:mt-0 md:w-[600px] px-3  py-5   md:py-5 lg:px-3 lg:pt-6 lg:w-[200px] lg:mr-10 ">
@@ -178,6 +198,15 @@ const Mission = () => {
           </div>
         </div>
       </form>
+      <div className="flex justify-center bg-black text-red-500">
+        {" "}
+        {launches && (
+          <p>
+            Showing {launches.length}
+            {launches.length > 1 ? " Missions" : " Mission"}
+          </p>
+        )}
+      </div>
       <section id="results">
         {launches.map((launch) =>
           launch.payloads.map((payload, index) => (
@@ -186,6 +215,7 @@ const Mission = () => {
                 <div className="flex px-2 py-[30px] ">
                   <div className="md:ml-[70px] lg:ml-[150px]">
                     <img
+                      onError={defect}
                       src={launch.links.mission_patch}
                       alt=""
                       className="w-[150px] h-[70px] md:h-[100px] lg:w-[120px] lg:h-[120px]"
@@ -241,7 +271,7 @@ const Mission = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {console.log("result: " + item)}
+                      {/* {console.log("result: " + item)} */}
 
                       {item === "article_link" && (
                         <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white md:hover:border-white md:hover-white hover:text-white ml-2  md:ml-[30px] lg:ml-[50px] ">
