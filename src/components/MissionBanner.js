@@ -14,7 +14,7 @@ function MissionBanner() {
 
       <div className="flex justify-center mt-[90px] text-[25px] text-gray-300 font-bellefair md:text-[50px] lg:text-[60px]">
         <h3>
-          DISCOVER SPACE MISSIONS
+          DISCOVER SPACE MISSION
           <div
             id="dropdown-icoon"
             className=" flex justify-center  lg:h-[50px]"

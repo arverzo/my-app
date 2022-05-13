@@ -5,6 +5,9 @@ import MissionBanner from "../components/MissionBanner";
 import SelectBox from "../components/SelectBox";
 import format from "date-fns/format";
 import Footer from "../components/Footer";
+import Swal from "sweetalert2";
+import { MdBrokenImage } from "react-icons/io";
+import Default from "../Sub-assets/mission/default.png";
 
 const Mission = () => {
   const [launchpads, setLaunchpads] = useState([]);
@@ -100,7 +103,12 @@ const Mission = () => {
         selectedMaxYear !== "ANY"
       ) {
         if (selectedMinYear > selectedMaxYear) {
-          alert("invalid date range ");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Date Range!",
+            footer: "Please Enter Valid Date Range",
+          });
         }
       }
 
@@ -112,8 +120,8 @@ const Mission = () => {
 
   const data = [];
 
-  const defect = () => {
-    img.target.src = "";
+  const defect = (img) => {
+    img.target.src = Default;
   };
 
   return (
@@ -198,8 +206,7 @@ const Mission = () => {
           </div>
         </div>
       </form>
-      <div className="flex justify-center bg-black text-red-500">
-        {" "}
+      <div className="flex justify-center bg-black text-gray-400 pt-3 ">
         {launches && (
           <p>
             Showing {launches.length}
@@ -213,27 +220,28 @@ const Mission = () => {
             <div key={index}>
               <div className="bg-black">
                 <div className="flex px-2 py-[30px] ">
-                  <div className="md:ml-[70px] lg:ml-[150px]">
+                  <div className="   ml-6 md:ml-[70px] md:-mt-[20px] lg:ml-[150px] ">
                     <img
-                      onError={defect}
                       src={launch.links.mission_patch}
                       alt=""
-                      className="w-[150px] h-[70px] md:h-[100px] lg:w-[120px] lg:h-[120px]"
+                      onError={defect}
+                      className="w-[150px] h-[70px] md:h-[150px] lg:w-[120px] lg:h-[120px]"
                     />
                   </div>
 
                   <div
                     id="una"
-                    className="bg-black md:ml-[90px] lg:ml-[150px] "
+                    className="bg-black md:ml-[60px] lg:ml-[150px] "
                   >
-                    <h4 className=" barlow text-white">
+                    <h4 className=" barlow text-white ml-8 text-[16px] md:text-[22px] ">
                       {launch.rocket.rocket_name} - {payload.payload_id}
+                      <span className="text-red-500">
+                        {launch.land_success === true ? "" : "-Failed Mission"}
+                      </span>
                     </h4>
-                    <span className="text-red-500">
-                      {launch.land_success === true ? "" : "Failed Mission"}
-                    </span>
-                    <p className="barlow  text-gray-300 text-xs md:text-sm md:w-4/5 mt-10">
-                      {`Launched ${format(
+
+                    <p className="barlow  text-gray-300 text-xs md:text-sm md:w-4/5 mt-2 ml-8">
+                      {`Launched on ${format(
                         new Date(launch.launch_date_local),
                         "do MMMM yyyy"
                       )} at
@@ -249,18 +257,18 @@ const Mission = () => {
                     </p>
                   </div>
                   <div className="lg:ml-[300px]">
-                    <div className="text-center w-[10%] break-normal ml-[90px] mt-[px] md:ml-[30px] ">
-                      <h2 className="barlow text-white -ml-[50px] lg:right-0 ">
+                    <div className="text-center w-[10%] break-normal ml-[90px]  md:ml-[30px]  lg:pr-[150px]  ">
+                      <h2 className="barlow text-white -ml-[70px] lg:right-0 lg:text-[22px]">
                         {launch.flight_number}
                       </h2>
 
-                      <p className="text-slate-500  barlow-condensed -ml-[50px] ">
+                      <p className="text-slate-500  barlow-condensed -ml-[70px] ">
                         Flight Number
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="space-x-2 lg:space-x-4 space-y-2 mt-2 md:mt-8"></div>
+                <div className="space-x-2 lg:space-x-4 space-y-2 mt-2 md:mt-2"></div>
 
                 {Object.keys(launch.links)
                   .slice(1)
@@ -274,13 +282,13 @@ const Mission = () => {
                       {/* {console.log("result: " + item)} */}
 
                       {item === "article_link" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white md:hover:border-white md:hover-white hover:text-white ml-2  md:ml-[30px] lg:ml-[50px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white md:hover:border-white md:hover-white hover:text-white ml-8 md:ml-[310px] lg:ml-[150px] ">
                           Article
                         </button>
                       )}
 
                       {item == "video_link" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white  hover:text-white  md:hover:border-white md:hover-white  ml-2  md:ml-[30px]">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white  hover:text-white  md:hover:border-white md:hover-white  ml-2  md:ml-[10px]">
                           Watch Video
                         </button>
                       )}
@@ -292,25 +300,25 @@ const Mission = () => {
                       )}
 
                       {item == "presskit" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white ml-2 md:ml-[30px] lg:ml-[50px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white ml-8 md:ml-[270px]    md:flex md:flex-col flex flex-col my-2 lg:ml-[150px] ">
                           Press Kit
                         </button>
                       )}
 
                       {item == "reddit_campaign" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white  ml-2 md:ml-[30px] lg:ml-[50px]">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white  ml-8 md:ml-[270px]  lg:ml-[150px] ">
                           Reddit Campaign
                         </button>
                       )}
 
                       {item == "reddit_media" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white    ml-2 mt-[5px] ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white  md:hover:border-white md:hover-white  ml-8  md:ml-[270px]   lg:ml-[150px]  mt-[5px]  ">
                           Reddit Media
                         </button>
                       )}
 
                       {item == "reddit_recovery" && (
-                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white   md:hover:border-white md:hover-white   ml-2  ">
+                        <button className="barlow-condensed border p-1 md:px-4 rounded-sm text-sm text-gray-400 border-gray-400 hover:border-white hover:text-white   md:hover:border-white md:hover-white  ml-8 md:ml-[270px] lg:ml-[150px]  md:flex md:flex-col flex flex-col my-2   ">
                           Reddit Recovery
                         </button>
                       )}

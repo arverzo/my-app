@@ -138,7 +138,7 @@ export default function Destination() {
                 {/* moon description */}
                 <div className="  text-white   ">
                   <p
-                    className="  ml-10 mr-10   lg:text-left  text-[15px] font-barlow  text-center  md:text-[16px]  md:ml-[90px] md:mr-[90px]  lg:ml-[80px] lg:mr-[150px] lg:text-[18px]
+                    className="  ml-10 mr-10   lg:text-left  text-[15px] md:text-[16px] font-barlow  text-center    md:ml-[90px] md:mr-[90px]  lg:ml-[80px] lg:mr-[150px] lg:text-[18px]
                 
             "
                   >

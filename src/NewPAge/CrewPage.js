@@ -96,7 +96,7 @@ export default function CrewPage() {
 
           <div
             className="text-white flex justify-center text-[14px] font-barlow-condensed
-            space-x-4 pt-[10px] md:order-1 md:absolute md:pt-[300px] md:pl-[330px] lg:pl-[50px] lg:mt-[150px]"
+            space-x-4 pt-[10px] md:order-1 md:absolute md:pt-[320px] md:pl-[330px] lg:pl-[50px] lg:mt-[150px]"
           >
             <div className=" flex space-x-4  md:pt-3 lg:pt-[250px] lg:-ml-[390px]">
               <button

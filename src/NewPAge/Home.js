@@ -23,7 +23,7 @@ export default function Home() {
             </h1>
           </div>
           <div className=" flex justify-center ml-10 mr-10  pt-[30px] lg:block">
-            <p className=" text-[15px] font-barlow-condensed md:text-center md:w-[444px] md:h-[112px] md:text-[16px] lg:block">
+            <p className=" text-[15px] md:text-[16px] lg:text-[18px]  font-barlow-condensed md:text-center md:w-[444px] md:h-[112px]  lg:block">
               Let’s face it; if you want to go to space, you might as well
               genuinely go to outer space and not hover kind of on the edge of
               it. Well sit back, and relax because we’ll give you a truly out of
