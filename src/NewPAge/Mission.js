@@ -6,14 +6,14 @@ import SelectBox from "../components/SelectBox";
 import format from "date-fns/format";
 import Footer from "../components/Footer";
 import Swal from "sweetalert2";
-import { MdBrokenImage } from "react-icons/io";
+
 import Default from "../Sub-assets/mission/default.png";
 
 const Mission = () => {
   const [launchpads, setLaunchpads] = useState([]);
   const [selectBox, setSelectbox] = useState([]);
   const [launches, setLaunches] = useState([]);
-  let [userLaunchesData, setUserLaunchesData] = useState([]);
+
   const [years, setYears] = useState([]);
   const [selectYears, setSelectYears] = useState([]);
   const [selectedMinYear, setSelectedMinYear] = useState("");
@@ -259,7 +259,7 @@ const Mission = () => {
                   <div className="lg:ml-[300px]">
                     <div className="text-center w-[10%] break-normal ml-[90px]  md:ml-[30px]  lg:pr-[150px]  ">
                       <h2 className="barlow text-white -ml-[70px] lg:right-0 lg:text-[22px]">
-                        {launch.flight_number}
+                        {"#" + launch.flight_number}
                       </h2>
 
                       <p className="text-slate-500  barlow-condensed -ml-[70px] ">
