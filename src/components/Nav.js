@@ -1,33 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-const navList = [
-  {
-    id: "00",
-    to: "/",
-    title: "HOME",
-  },
-  {
-    id: "01",
-    to: "/destination",
-    title: "DESTINATION",
-  },
-  {
-    id: "02",
-    to: "/crew",
-    title: "CREW",
-  },
-  {
-    id: "03",
-    to: "/technology",
-    title: "TECHNOLOGY",
-  },
-  {
-    id: "04",
-    to: "/mission",
-    title: "MISSION",
-  },
-];
+import { navList } from "./Constant";
 
 function VerticalNavbar(props) {
   const path = useLocation().pathname;
