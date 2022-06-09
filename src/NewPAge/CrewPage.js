@@ -75,8 +75,8 @@ export default function CrewPage() {
       </div>
       {/* crew image carousel arnold*/}
       {/* flex  */}
-      <div id="mainPutang " className="lg:flex lg:ml-10">
-        <div id="putang1" className="lg:-mt-[150px] lg:ml-6">
+      <div className="lg:flex lg:ml-10">
+        <div className="lg:-mt-[150px] lg:ml-6">
           <div className="md:absolute md:mt-[300px]">
             <div className="flex overflow-x-hidden w-full ">
               {crews.map((crew, index) => (
@@ -120,10 +120,7 @@ export default function CrewPage() {
         </div>
 
         {/*  crew position */}
-        <div
-          id="putang2"
-          className="  lg:justify-center lg:hidden md:pt-[90px]"
-        >
+        <div className="  lg:justify-center lg:hidden md:pt-[90px]">
           <div className="md:to-blue-600  md:absolute md:mb-[900px] md:ml-[100px] md:w-[592px] lg:mt-[300px]">
             <div className=" flex justify-center items-center  font-bellefair text-[16px] pt-[50px] text-gray-200">
               <div className="md:font-bellefair md:text-[24px]">
